@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Kirjalistaus</title>
+	<meta http-equiv="Content-Type" content="text/html" charset=UTF-8/>
+</head>
+
+<body>
+	<h1>Kirjat</h1>
+	
+	<table>
+		<tr>
+			<th>Author</th>
+			<th>Title</th>
+			<th>ISBN</th>
+			<th>Year</th>
+			<th>Price</th>
+		</tr>
+		
+		<tr th:each="examp : ${books}">
+			<td th:text="${examp.author}"></td>
+			<td th:text="${examp.title}"></td>
+			<td th:text="${examp.year}"></td>
+			<td th:text="${examp.isbn}"></td>
+			<td th:text="${examp.price}"></td>
+			<td th:text="${examp.category.name}"></td>
+			
+			<td><a th:href="@{/delete/{id}(id=${examp.id})}">Delete</a></td> 
+			<td><a th:href="@{/edit/{id}(id=${examp.id})}">Edit</a></td>
+		</tr>
+	</table>
+	
+	<a href="/add">Add a new book</a>
+	
+</body>
+</html>
