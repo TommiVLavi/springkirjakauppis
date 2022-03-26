@@ -16,6 +16,12 @@
 				<p>ISBN <input type="text" th:field="*{isbn}"/> </p>
 				<p>Year <input type="text" th:field="*{year}"/> </p>
 				<p>Price <input type="text" th:field="*{price}"/> </p>
+				<select id="catlist" th:field="*{category}" class="form-control">
+					<option th:each="category: ${categories}"
+							th:value="${category.categoryid}"
+							th:text="${category.name}">
+					</option>
+				</select>
 				
 				<p> <input type="submit" value="Muokkaa"/> </p>
 			</form>
