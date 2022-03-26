@@ -5,6 +5,9 @@ import javax.persistence.Id;
 import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.JoinColumn;
 
 @Entity
@@ -21,6 +24,7 @@ public class Book {
 	
 	@ManyToOne
 	@JoinColumn(name = "categoryid")
+	@JsonManagedReference
 	private Category category;
 
 	

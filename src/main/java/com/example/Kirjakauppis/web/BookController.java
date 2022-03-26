@@ -1,10 +1,14 @@
 package com.example.Kirjakauppis.web;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.Kirjakauppis.domain.Book;
@@ -51,5 +55,17 @@ public class BookController {
 		model.addAttribute("book", repository.findById(bookId));
 		model.addAttribute("categories", catRepository.findAll());
 		return "edit";
+	}
+	
+	
+	// REST services
+	@RequestMapping(value="/books", method = RequestMethod.GET)
+	public @ResponseBody List<Book> bookListRest(){
+		return (List<Book>) repository.findAll();
+	}
+	
+	@RequestMapping(value="/book/{id}", method = RequestMethod.GET)
+	public @ResponseBody Optional<Book> findStudentRest(@PathVariable("id") Long bookId) {
+		return repository.findById(bookId);
 	}
 }
