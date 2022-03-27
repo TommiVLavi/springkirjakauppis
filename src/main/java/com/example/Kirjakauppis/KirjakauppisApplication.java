@@ -8,6 +8,8 @@ import com.example.Kirjakauppis.domain.Book;
 import com.example.Kirjakauppis.domain.BookRepository;
 import com.example.Kirjakauppis.domain.Category;
 import com.example.Kirjakauppis.domain.CategoryRepository;
+import com.example.Kirjakauppis.domain.User;
+import com.example.Kirjakauppis.domain.UserRepository;
 
 import org.springframework.boot.CommandLineRunner;
 
@@ -19,7 +21,8 @@ public class KirjakauppisApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner demo(BookRepository repository, CategoryRepository catRepository) {
+	public CommandLineRunner demo(BookRepository repository, CategoryRepository catRepository,
+			UserRepository usrRepository) {
 		return (args) -> {
 			// Your code...add some demo data to db
 			
@@ -31,6 +34,12 @@ public class KirjakauppisApplication {
 			repository.save(new Book(catRepository.findByName("Art").get(0),"The Animators Survival Kit", "Richard Williams", 2000, 453975, 34.9));
 			repository.save(new Book(catRepository.findByName("Travel").get(0),"A visit to Tallinn", "Eesti Keesti", 2021, 437553, 12.3));
 			
+			usrRepository.save(new User("Tommi",
+					"$2a$10$zWOvOn/XXhVC37jfEYDdfOwvJJqEIxeg/FLNCZT/AEGFdQR8niVXi",
+					"Bobytom62@gmail.com","USER"));
+			usrRepository.save(new User("Santeri",
+					"$2a$10$UOYUmeKkuT6/SwedGF9eH.HupsEJM7JXG9kxyaM4wWwa9xWeae5B6",
+					"bgr912@myy.haaga-helia.fi","ADMIN"));
 		};
 	}
 }
