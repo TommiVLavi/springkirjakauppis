@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 	<title>Kirjalistaus</title>
 	<meta http-equiv="Content-Type" content="text/html" charset=UTF-8/>
@@ -26,7 +27,9 @@
 			<td th:text="${examp.price}"></td>
 			<td th:text="${examp.category.name}"></td>
 			
-			<td><a th:href="@{/delete/{id}(id=${examp.id})}">Delete</a></td> 
+			<td sec:authorize="hasRole('ADMIN')">
+				<a th:href="@{/delete/{id}(id=${examp.id})}">Delete</a></td>
+				
 			<td><a th:href="@{/edit/{id}(id=${examp.id})}">Edit</a></td>
 		</tr>
 	</table>
