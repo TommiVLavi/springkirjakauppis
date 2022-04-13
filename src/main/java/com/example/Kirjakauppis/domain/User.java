@@ -30,6 +30,7 @@ public class User {
 		super();
 		this.username = username;
 		this.passwordHash = passwordHash;
+		this.email = email;
 		this.role = role;
 	}
 
@@ -57,7 +58,7 @@ public class User {
 		return passwordHash;
 	}
 
-	public void getPasswordHash(String passwordHash) {
+	public void setPasswordHash(String passwordHash) {
 		this.passwordHash = passwordHash;
 	}
 

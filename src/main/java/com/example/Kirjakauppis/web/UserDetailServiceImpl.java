@@ -20,7 +20,8 @@ public class UserDetailServiceImpl implements UserDetailsService {
 	}
 	
 	@Override
-	public UserDetails loadUserByUsername(String usrName) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String usrName) throws UsernameNotFoundException 
+	{
 		User currUsr = rep.findByUsername(usrName);
 		UserDetails user = new org.springframework.security.core.userdetails.User(usrName, 
 				currUsr.getPasswordHash(),
